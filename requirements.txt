@@ -1,0 +1,13 @@
+jupyter
+ipykernel
+nbformat
+pandas
+numpy
+matplotlib
+seaborn
+scipy
+statsmodels
+scikit-learn
+openpyxl
+missingno
+pytest
