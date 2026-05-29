@@ -1,53 +1,36 @@
-# metpen-ai-lab — Refined Implementation Plan
+# metpen-ai-lab — Historical Implementation Reference
 
-> Workspace name: **metpen-ai-lab**  
-> Purpose: a reproducible VS Code + Dev Container + Python/Jupyter lab for research methods learning with responsible AI assistance.  
-> Implementation style: **deterministic, explicit, minimal-but-not-over-simplified, and low-hallucination**.
+> **NOTE**: Ini adalah dokumen historis dari fase perencanaan awal.  
+> **Panduan aktif dan normatif** untuk proyek saat ini tersimpan di:
+> - [`AGENTS.md`](/AGENTS.md) — Konvensi dan workflow repo aktif
+> - [`.github/copilot-instructions.md`](/.github/copilot-instructions.md) — Instruksi Copilot untuk pedagogy dan AI usage
+>
+> Dokumen ini disimpan sebagai referensi konteks implementasi. Jangan jadikan sebagai sumber kebenaran untuk keputusan baru.
 
 ---
 
-## 0. Implementation guardrails for the AI agent
+## Context: Original Implementation Considerations
 
-Follow these rules strictly.
+Rencana awal mempertimbangkan hal-hal berikut (untuk referensi saja; lihat instruksi aktif di atas untuk rules yang berlaku):
 
-1. **Do not invent requirements.** Only create files, folders, notebooks, scripts, and datasets listed in this plan.
+1. **Do not invent requirements.** Only create files, folders, notebooks, scripts, and datasets listed in the plan.
 2. **Do not invent real-data provenance.** If a real dataset is not downloaded from a verified public source, do not claim it is real.
 3. **Synthetic data must be labeled synthetic everywhere.** Never present synthetic data as real empirical evidence.
-4. **Use relative paths only.** Do not use personal machine paths such as `/Users/...`, `C:\...`, or `/home/...` except container-controlled project paths.
+4. **Use relative paths as primary strategy.** Avoid personal machine paths such as `/Users/...`, `C:\...`, or `/home/...` except when container-specific paths are necessary.
 5. **Keep notebooks beginner-friendly.** Prefer clear Markdown explanations over complex code.
-6. **Do not add optional tools unless listed.** Avoid extra frameworks, dashboards, databases, cloud services, authentication flows, or unexplained dependencies.
+6. **Do not add optional tools unless explicitly required.** Avoid extra frameworks, dashboards, databases, cloud services, authentication flows, or unexplained dependencies.
 7. **When uncertain, create a placeholder with TODO instead of guessing.**
-8. **Prioritize reproducibility over completeness.** A working 7-notebook teaching lab is the goal for the first implementation.
+8. **Prioritize reproducibility over completeness.** A working 7-notebook teaching lab was the goal for the first implementation.
 9. **Do not add public publishing steps, GitHub Classroom, autograding, or advanced CI** until the first implementation passes the stop condition.
-10. **Do not use `postCreateCommand` for dependency installation.** Dependencies must be installed in the Docker image through `.devcontainer/Dockerfile`.
+10. **Do not use `postCreateCommand` for dependency installation.** Dependencies are installed in the Docker image through `.devcontainer/Dockerfile`.
 
 ---
 
-## 1. Learning language preference
+## Note: Learning Language
 
-Before generating notebooks, documentation, prompts, README text, chart explanations, and other student-facing content, ask the user:
+**Active decision (see [`AGENTS.md`](/AGENTS.md))**: Bahasa Indonesia is the PRIMARY language for student-facing content.
 
-```text
-What language should the learning materials be presented in?
-```
-
-If the user does not answer, use **English** as the default language.
-
-Apply the selected language consistently to:
-
-- notebook Markdown explanations;
-- learning outcomes;
-- chart explanations;
-- interpretation examples;
-- reflection questions;
-- README student instructions;
-- AI usage policy;
-- prompt templates;
-- troubleshooting notes.
-
-Keep these technical elements in English unless the user explicitly requests otherwise:
-
-- folder names;
+(Historical context: Earlier versions considered asking for language preference with English as default, but the current implementation has committed to Indonesian-first for consistency.)
 - file names;
 - Python variable names;
 - function names;
@@ -1034,3 +1017,19 @@ The first implementation is complete when:
 8. the selected learning-material language is used consistently.
 
 Do not add public publishing steps, GitHub Classroom, autograding, advanced CI, or extra notebooks until these eight conditions are met.
+
+---
+
+## **IMPORTANT: Active Instructions**
+
+**Do not use this document as the source of truth for new decisions.**
+
+The active guidelines are stored in:
+
+1. **[`AGENTS.md`](/AGENTS.md)** — Defines repo conventions, language (Indonesian), and workflow.
+2. **[`.github/copilot-instructions.md`](/.github/copilot-instructions.md)** — Defines pedagogy-first rules and AI usage expectations for the Copilot assistant.
+3. **[`docs/02-ai-usage-policy.md`](/docs/02-ai-usage-policy.md)** — Documents the AI usage policy for students.
+
+This document (`metpen-ai-lab.md`) is kept for historical reference only. It captures the original planning context but should not override the active instructions above.
+
+For current project decisions, refer to the active files listed above. If you find conflicts, the active files take precedence.
